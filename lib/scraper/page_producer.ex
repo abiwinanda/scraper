@@ -1,4 +1,4 @@
-defmodule Scraper.PageProducer do
+defmodule PageProducer do
   use GenStage
   require Logger
 
