@@ -2,9 +2,9 @@ defmodule OnlinePageProducerConsumer do
   use GenStage
   require Logger
 
-  def start_link(_args) do
+  def start_link(id) do
     initial_state = []
-    GenStage.start_link(__MODULE__, initial_state, name: __MODULE__)
+    GenStage.start_link(__MODULE__, initial_state, name: via(id))
   end
 
   def init(initial_state) do
@@ -22,5 +22,9 @@ defmodule OnlinePageProducerConsumer do
 
     events = Enum.filter(events, &Scraper.online?/1)
     {:noreply, events, state}
+  end
+
+  def via(id) do
+    {:via, Registry, {ProducerConsumerRegistry, id}}
   end
 end
