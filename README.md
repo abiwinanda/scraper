@@ -16,7 +16,7 @@ To run the app, install the required `:gen_stage` dependency
 mix deps.get
 ```
 
-next run the app by running
+next, run the app by running
 
 ```sh
 iex -S mix
