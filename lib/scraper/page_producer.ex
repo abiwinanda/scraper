@@ -17,10 +17,7 @@ defmodule PageProducer do
   def init(initial_state) do
     Logger.info("PageProducer init")
 
-    # If you want to use a fixed-size buffer, you also have the option to discard events
-    # from the end of the queue when the :buffer_size limit is hit. Just pass the optional
-    # :buffer_keep param and set it to :first (the default value is :last).
-    {:producer, initial_state, buffer_size: 1, buffer_keep: :first}
+    {:producer, initial_state}
   end
 
   def handle_cast({:pages, pages}, state) do
